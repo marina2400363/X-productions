@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Events — X-Productions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/events.css">
+</head>
+<body data-page="events" data-root="../">
+
+  <div id="site-header"></div>
+
+  <main id="main" class="page">
+    <div class="container">
+      <div class="page__head">
+        <h1 class="page__title">Events</h1>
+        <p class="page__count" id="eventCount" aria-live="polite"></p>
+      </div>
+
+      <!-- Search, city filter, sorting and category filters (logic in js/events.js) -->
+      <form class="filters card" id="filters" role="search" onsubmit="return false">
+        <div class="filters__row">
+          <div class="field filters__search">
+            <label class="sr-only" for="searchInput">Search events</label>
+            <span class="filters__search-icon" data-icon="search"></span>
+            <input class="field__input" id="searchInput" type="search" placeholder="Search events, artists or venues" autocomplete="off">
+          </div>
+          <div class="field">
+            <label class="sr-only" for="cityInput">City</label>
+            <select class="field__input" id="cityInput"><option value="">All cities</option></select>
+          </div>
+          <div class="field">
+            <label class="sr-only" for="sortInput">Sort by</label>
+            <select class="field__input" id="sortInput">
+              <option value="date">Soonest</option>
+              <option value="price-asc">Price: low to high</option>
+              <option value="price-desc">Price: high to low</option>
+            </select>
+          </div>
+        </div>
+        <div class="pills" id="categoryPills" role="group" aria-label="Filter by category"></div>
+      </form>
+
+      <div class="event-grid" id="eventGrid"></div>
+
+      <div class="empty" id="emptyState" hidden>
+        <h2 class="empty__title">No events found</h2>
+        <p>Try a different search or clear the filters.</p>
+        <button class="btn btn--ghost" id="clearFilters" type="button">Clear filters</button>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/events.js"></script>
+</body>
+</html>

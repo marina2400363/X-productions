@@ -1,0 +1,119 @@
+/* =====================================================================
+   X-PRODUCTIONS — EVENTS STYLES  (Member 2)
+   Events listing page + event details page. Uses tokens from global.css.
+   ===================================================================== */
+
+.page { padding: calc(var(--nav-height) + 1.8rem) 0 4.5rem; min-height: 70vh; }
+.page__head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; }
+.page__title { font: 400 clamp(2rem, 3.8vw, 3rem) / 1.05 var(--font-display); letter-spacing: -.01em; }
+.page__count { color: var(--text-muted); font-size: .88rem; }
+
+/* ---------- Filters ---------- */
+.filters { padding: 1rem; margin-bottom: 1.75rem; }
+.filters__row { display: grid; grid-template-columns: 1fr; gap: .6rem; }
+.filters__search { position: relative; }
+.filters__search-icon { position: absolute; left: .95rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); display: grid; pointer-events: none; }
+.filters__search .field__input { padding-left: 2.6rem; }
+.field__input[type="search"]::-webkit-search-cancel-button { filter: invert(.7); }
+select.field__input { appearance: none; padding-right: 2.2rem; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23A9A9A9' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat; background-position: right .85rem center; background-size: 14px; }
+select.field__input option { background: var(--surface); color: var(--text); }
+
+.pills { display: flex; gap: .6rem; overflow-x: auto; padding: .9rem 0 .1rem; scrollbar-width: none; }
+.pills::-webkit-scrollbar { display: none; }
+.pill {
+  flex: none; padding: .5rem 1.05rem; border-radius: 999px;
+  border: 1px solid var(--line-strong); background: transparent;
+  font-size: .86rem; font-weight: 600; white-space: nowrap;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.pill:hover { border-color: var(--lime); color: var(--lime); }
+.pill[aria-pressed="true"] { background: var(--lime); border-color: var(--lime); color: var(--on-lime); }
+
+@media (min-width: 768px) { .filters__row { grid-template-columns: 2fr 1fr 1fr; } }
+
+/* ---------- Event cards ---------- */
+.event-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.25rem; }
+.event-card {
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow); transition: transform .25s, border-color .25s;
+}
+.event-card:hover { transform: translateY(-4px); border-color: rgba(198, 241, 53, .45); }
+.event-card:hover .poster__img { transform: scale(1.05); }
+.event-card__poster { aspect-ratio: 16 / 10; }
+.event-card__date {
+  position: absolute; top: 12px; left: 12px; z-index: 3; text-align: center;
+  background: rgba(20, 20, 20, .82); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  border: 1px solid var(--line-strong); border-radius: 12px; padding: .32rem .7rem;
+  font-size: .62rem; font-weight: 800; letter-spacing: .1em; color: var(--lime); line-height: 1.15;
+}
+.event-card__date b { display: block; font-size: 1.25rem; color: var(--text); letter-spacing: -.02em; }
+.event-card__soldout {
+  position: absolute; top: 12px; right: 12px; z-index: 3; padding: .28rem .7rem; border-radius: 999px;
+  background: rgba(20, 20, 20, .88); border: 1px solid rgba(242, 92, 92, .4); color: var(--bad); font-size: .72rem; font-weight: 700;
+}
+.event-card__body { padding: 1rem 1.1rem 1.1rem; display: flex; flex-direction: column; flex: 1; }
+.event-card__cat { font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--text-muted); }
+.event-card__title { font-size: 1.15rem; margin: .2rem 0 .3rem; }
+.event-card__venue { display: flex; align-items: center; gap: .45rem; font-size: .85rem; color: var(--text-muted); }
+.event-card__foot { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: .9rem; border-top: 1px solid var(--line); }
+.event-card__body > .event-card__venue + .event-card__foot { margin-top: 1rem; }
+.price { font-size: .8rem; color: var(--text-muted); }
+.price b { font-size: 1.05rem; color: var(--text); font-weight: 700; }
+.event-card__go {
+  width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--surface-light); transition: background .25s, color .25s, transform .25s;
+}
+.event-card:hover .event-card__go { background: var(--lime); color: var(--on-lime); transform: rotate(45deg); }
+
+.empty { text-align: center; padding: 4rem 1rem; color: var(--text-muted); display: grid; gap: .8rem; justify-items: center; }
+.empty[hidden] { display: none; }
+.empty__title { font: 400 2rem var(--font-display); color: var(--text); }
+
+/* ---------- Event details ---------- */
+.crumb { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; margin-bottom: 1.2rem; font-size: .84rem; color: var(--text-muted); }
+.crumb a:hover { color: var(--lime); }
+.detail { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: start; }
+@media (min-width: 992px) { .detail { grid-template-columns: 1fr 380px; gap: 2.5rem; } }
+
+.detail__banner { height: clamp(220px, 38vw, 400px); border-radius: 24px; border: 1px solid var(--line); }
+.detail__cat { margin: 1.5rem 0 .6rem; }
+.detail__title { font: 400 clamp(2.4rem, 5vw, 4rem) / 1 var(--font-display); letter-spacing: -.015em; }
+.detail__artist { margin-top: .6rem; color: var(--text-muted); font-size: 1.05rem; }
+
+.meta { display: flex; flex-wrap: wrap; gap: 1.2rem 2.2rem; margin: 1.5rem 0 2rem; }
+.meta__item { display: flex; gap: .8rem; align-items: center; }
+.meta__icon {
+  width: 42px; height: 42px; border-radius: 12px; flex: none; display: grid; place-items: center;
+  background: var(--surface); border: 1px solid var(--line); color: var(--lime); font-size: 1.1rem;
+}
+.meta__item small { display: block; font-size: .74rem; color: var(--text-muted); }
+.meta__item b { font-size: .95rem; font-weight: 600; }
+
+.detail__section { padding: 1.6rem 0; border-top: 1px solid var(--line); }
+.detail__section h2 { font: 400 1.9rem var(--font-display); letter-spacing: -.01em; margin-bottom: .9rem; }
+.detail__section p { color: var(--text-muted); max-width: 42rem; }
+.detail__section p + p { margin-top: .8rem; }
+.program__row { display: flex; gap: 1rem; padding: .85rem 0; border-bottom: 1px solid var(--line); }
+.program__time { width: 84px; flex: none; font-weight: 700; color: var(--lime); font-variant-numeric: tabular-nums; }
+
+/* Ticket panel (sticky on desktop) */
+.tickets { position: static; }
+@media (min-width: 992px) { .tickets { position: sticky; top: calc(var(--nav-height) + 18px); } }
+.tickets__title { font: 400 1.9rem var(--font-display); margin-bottom: .4rem; }
+.tier { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: .95rem 0; }
+.tier + .tier { border-top: 1px solid var(--line); }
+.tier__name { font-weight: 700; }
+.tier__note { font-size: .8rem; color: var(--text-muted); }
+.tier__left { font-size: .75rem; color: var(--text-muted); margin-top: .15rem; }
+.tier__left--low { color: var(--warn); }
+.tier__price { font-weight: 700; font-size: 1.05rem; white-space: nowrap; }
+.tickets__from { display: flex; justify-content: space-between; align-items: baseline; padding-top: 1rem; margin-top: .3rem; border-top: 1px solid var(--line); color: var(--text-muted); font-size: .9rem; }
+.tickets__from b { font-size: 1.4rem; color: var(--text); }
+.tickets .btn { width: 100%; margin-top: 1rem; }
+.tickets__demo { margin-top: .9rem; font-size: .75rem; color: var(--text-muted); text-align: center; }
+
+.not-found { text-align: center; padding: 5rem 1rem; display: grid; gap: 1rem; justify-items: center; color: var(--text-muted); }
+.not-found h1 { font: 400 2.6rem var(--font-display); color: var(--text); }
