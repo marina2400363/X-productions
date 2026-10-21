@@ -33,6 +33,9 @@
     const countEl = document.getElementById("eventCount");
     const emptyEl = document.getElementById("emptyState");
 
+    // Pressing Enter in the search box must not submit (reload) the page; filtering already happens while typing
+    document.getElementById("filters").addEventListener("submit", (e) => e.preventDefault());
+
     let activeCategory = new URLSearchParams(location.search).get("category") || "all";
     if (activeCategory !== "all" && !XP.CATEGORIES.some((c) => c.key === activeCategory)) activeCategory = "all";
 
@@ -128,7 +131,8 @@
           <a class="btn btn--primary" href="events.html">Browse all events</a>
         </div>`;
     } else {
-      document.title = `${event.name} — X-Productions`;
+      /* Event names are stored HTML-escaped; convert back to plain text for the tab title */
+      document.title = `${new DOMParser().parseFromString(event.name, "text/html").documentElement.textContent} — X-Productions`;
       const tiers = event.tiers.map((t) => `
         <div class="tier">
           <div>
