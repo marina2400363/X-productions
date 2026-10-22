@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>X-Productions — Tickets for every event</title>
+  <meta name="description" content="X-Productions: live concerts, proms, festivals and shows across Egypt, with tickets you can book in minutes.">
+
+  <!-- Fonts: Instrument Serif (headlines) + Manrope (body/UI) from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
+
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body class="page-home" data-page="home" data-root="">
+
+  <!-- Navbar + mobile menu are built by js/main.js -->
+  <div id="site-header"></div>
+
+  <main id="main">
+
+    <!-- ===== Cinematic hero ===== -->
+    <section class="hero" aria-label="Welcome">
+      <div class="hero__scene"></div>
+      <div class="hero__slide is-active">
+        <img data-fallback src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=2200&q=75" alt="Crowd at a live concert under warm stage lights" fetchpriority="high">
+      </div>
+      <div class="hero__slide">
+        <img data-fallback src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=2200&q=75" alt="Fans with their hands in the air at a night show" loading="lazy">
+      </div>
+      <div class="hero__slide">
+        <img data-fallback src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=2200&q=75" alt="Festival crowd at golden hour" loading="lazy">
+      </div>
+
+      <div class="hero__content">
+        <div class="container">
+          <div class="hero__eyebrow hero__fade">LIVE EXPERIENCES</div>
+          <h1 class="hero__title">
+            <span class="hero__line"><span>More than</span></span>
+            <span class="hero__line"><span>just a ticket.</span></span>
+          </h1>
+          <p class="hero__text hero__fade">Concerts, proms, festivals and live shows across Egypt, with tickets you can book in minutes.</p>
+          <a class="hero__cta hero__fade" href="pages/events.html">Explore Events</a>
+        </div>
+      </div>
+
+      <div class="hero__dots-wrap">
+        <div class="container">
+          <div class="hero__dots" role="group" aria-label="Hero images">
+            <button type="button" aria-label="Show image 1"><i></i></button>
+            <button type="button" aria-label="Show image 2"><i></i></button>
+            <button type="button" aria-label="Show image 3"><i></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Featured events (rendered by js/home.js from js/data.js) ===== -->
+    <section class="featured" id="featured" aria-labelledby="featuredTitle">
+      <div class="container">
+        <div class="featured__head">
+          <h2 class="featured__title" id="featuredTitle">Featured Events</h2>
+          <a class="featured__all" href="pages/events.html">View all events</a>
+        </div>
+        <div class="featured__grid" id="featuredGrid"></div>
+      </div>
+    </section>
+
+    <!-- ===== About us ===== -->
+    <section class="about" id="about" aria-labelledby="aboutTitle">
+      <div class="container about__grid">
+        <div>
+          <h2 class="about__title" id="aboutTitle">About Us</h2>
+          <p class="about__lead">X-Productions is an Egyptian live-events company. We produce concerts, proms, festivals and shows, and we run the ticketing too, so getting in is the easy part.</p>
+          <p class="about__text">From the first booking to the QR code at the gate, every step is built to be quick and clear for guests and organizers alike.</p>
+          <div class="about__social">
+            <!-- Placeholder links: replace "#about" with the real social media pages -->
+            <a href="#about"><span data-icon="instagram"></span>Instagram</a>
+            <a href="#about"><span data-icon="tiktok"></span>TikTok</a>
+            <a href="#about"><span data-icon="facebook"></span>Facebook</a>
+          </div>
+        </div>
+        <div class="about__photos">
+          <div class="poster about__photo about__photo--main">
+            <img class="poster__img" data-fallback loading="lazy" alt="Band performing on a lit stage" src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=1200&q=70">
+          </div>
+          <div class="poster about__photo about__photo--accent">
+            <img class="poster__img" data-fallback loading="lazy" alt="Lights and confetti over a festival crowd" src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?auto=format&fit=crop&w=1000&q=70">
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer is built by js/main.js -->
+  <div id="site-footer"></div>
+
+  <!-- Order matters: data first, then shared UI, then this page -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>
