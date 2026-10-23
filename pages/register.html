@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create account — X-Productions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body data-page="account" data-root="../">
+
+  <div id="site-header"></div>
+
+  <main id="main" class="auth">
+    <aside class="auth__visual" aria-hidden="true">
+      <div class="poster auth__poster"><img class="poster__img" data-fallback src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1400&q=70" alt=""></div>
+      <p class="auth__quote">Be there for<br>every moment.</p>
+    </aside>
+
+    <section class="auth__panel">
+      <div class="auth__card">
+        <h1 class="auth__title">Create your account</h1>
+        <p class="auth__sub">Book tickets in minutes and keep them all in one place.</p>
+
+        <p class="notice" role="note">
+          <b>Phase 1 demo:</b> no account is really created and your password is never stored. Only your name and email are kept in this browser so the demo can show your tickets.
+        </p>
+
+        <form id="registerForm" novalidate>
+          <div class="field">
+            <label class="field__label" for="name">Full name</label>
+            <input class="field__input" id="name" name="name" type="text" autocomplete="name" placeholder="Your full name" aria-describedby="name-error">
+            <p class="field__error" id="name-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="email">Email</label>
+            <input class="field__input" id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" aria-describedby="email-error">
+            <p class="field__error" id="email-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="password">Password</label>
+            <input class="field__input" id="password" name="password" type="password" autocomplete="new-password" placeholder="At least 8 characters" aria-describedby="password-error">
+            <p class="field__error" id="password-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="confirm">Confirm password</label>
+            <input class="field__input" id="confirm" name="confirm" type="password" autocomplete="new-password" placeholder="Repeat your password" aria-describedby="confirm-error">
+            <p class="field__error" id="confirm-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label class="check">
+              <input type="checkbox" id="terms" name="terms" aria-describedby="terms-error">
+              <span>I agree to the terms of use (demo).</span>
+            </label>
+            <p class="field__error" id="terms-error" aria-live="polite"></p>
+          </div>
+          <button class="btn btn--primary btn--lg auth__submit" type="submit">Create account</button>
+        </form>
+
+        <p class="auth__switch">Already have an account? <a href="login.html">Log in</a></p>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>

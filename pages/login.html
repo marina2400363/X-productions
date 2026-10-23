@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in — X-Productions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body data-page="account" data-root="../">
+
+  <div id="site-header"></div>
+
+  <main id="main" class="auth">
+    <aside class="auth__visual" aria-hidden="true">
+      <div class="poster auth__poster"><img class="poster__img" data-fallback src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1400&q=70" alt=""></div>
+      <p class="auth__quote">Your seat is<br>waiting.</p>
+    </aside>
+
+    <section class="auth__panel">
+      <div class="auth__card">
+        <h1 class="auth__title">Welcome back</h1>
+        <p class="auth__sub">Log in to see your tickets and book events.</p>
+
+        <p class="notice" role="note">
+          <b>Phase 1 demo:</b> there is no server. Any valid email and a password of 8+ characters will "log in". Nothing is sent or saved except your name and email in this browser.
+        </p>
+
+        <form id="loginForm" novalidate>
+          <div class="field">
+            <label class="field__label" for="email">Email</label>
+            <input class="field__input" id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" aria-describedby="email-error">
+            <p class="field__error" id="email-error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="password">Password</label>
+            <input class="field__input" id="password" name="password" type="password" autocomplete="current-password" placeholder="At least 8 characters" aria-describedby="password-error">
+            <p class="field__error" id="password-error" aria-live="polite"></p>
+          </div>
+          <p class="field__error form-error" id="formError" role="alert"></p>
+          <button class="btn btn--primary btn--lg auth__submit" type="submit">Log in</button>
+        </form>
+
+        <button class="btn btn--ghost auth__alt" id="demoLogin" type="button">Use the demo customer account</button>
+        <p class="auth__switch">New to X-Productions? <a href="register.html">Create an account</a></p>
+
+        <!-- Development helper for the team and the professor — not real admin authentication -->
+        <div class="devbox">
+          <span class="chip chip--warn">Development only</span>
+          <p>Admin Portal preview skips login so you can review the admin screens.</p>
+          <button class="btn btn--ghost btn--sm" id="adminPreview" type="button">Preview Admin Portal</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>

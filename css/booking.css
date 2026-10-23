@@ -1,0 +1,178 @@
+/* =====================================================================
+   X-PRODUCTIONS — BOOKING + MY TICKETS STYLES  (Member 3)
+   Ticket selection page and the My Tickets page.
+   ===================================================================== */
+
+.page-narrow { padding: calc(var(--nav-height) + 1.8rem) 0 4.5rem; min-height: 70vh; }
+.crumb { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; margin-bottom: 1.2rem; font-size: .84rem; color: var(--text-muted); }
+.crumb a:hover { color: var(--lime); }
+.booking__title { font: 400 clamp(2rem, 3.8vw, 3rem) / 1.05 var(--font-display); letter-spacing: -.01em; }
+
+/* Small progress steps (Your tickets → Checkout → All set) */
+.steps { display: flex; gap: 1.2rem; list-style: none; margin: 1rem 0 2rem; padding: 0; font-size: .82rem; font-weight: 600; color: var(--text-muted); flex-wrap: wrap; }
+.steps__item { display: flex; align-items: center; gap: .5rem; }
+.steps__item::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--surface-light); }
+.steps__item--on { color: var(--text); }
+.steps__item--on::before { background: var(--lime); box-shadow: 0 0 0 4px rgba(198, 241, 53, .2); }
+
+.booking { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: start; }
+@media (min-width: 992px) { .booking { grid-template-columns: 1fr 380px; gap: 2.5rem; } }
+
+/* Ticket category rows */
+.tq {
+  display: grid; grid-template-columns: 1fr auto; gap: .6rem 1rem; align-items: center;
+  margin-bottom: .8rem; padding: 1rem 1.1rem;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  transition: border-color .2s, box-shadow .2s;
+}
+.tq--has { border-color: var(--lime); box-shadow: 0 0 0 3px rgba(198, 241, 53, .12); }
+.tq__name { font-weight: 700; }
+.tq__note { font-size: .85rem; color: var(--text-muted); }
+.tq__left { font-size: .75rem; color: var(--text-muted); margin-top: .15rem; }
+.tq__left--low { color: var(--warn); }
+.tq__price { font-weight: 700; font-size: 1.05rem; white-space: nowrap; text-align: right; }
+@media (min-width: 576px) {
+  .tq { grid-template-columns: 1fr auto auto; }
+}
+.qty { display: inline-flex; align-items: center; border: 1px solid var(--line-strong); border-radius: 12px; background: var(--surface-dark); overflow: hidden; justify-self: end; }
+.qty button { width: 40px; height: 40px; border: 0; background: transparent; font-size: 1.2rem; font-weight: 700; transition: background .2s, color .2s; }
+.qty button:hover:not(:disabled) { background: var(--lime); color: var(--on-lime); }
+.qty button:disabled { opacity: .35; cursor: not-allowed; }
+.qty output { min-width: 34px; text-align: center; font-weight: 700; }
+.booking__limit { margin-top: .4rem; font-size: .8rem; color: var(--text-muted); }
+
+/* Summary */
+.summary { position: static; }
+@media (min-width: 992px) { .summary { position: sticky; top: calc(var(--nav-height) + 18px); } }
+.summary__event { display: flex; gap: .9rem; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid var(--line); }
+.summary__thumb { width: 64px; height: 64px; border-radius: 14px; flex: none; }
+.summary__name { font-weight: 700; }
+.summary__meta { font-size: .82rem; color: var(--text-muted); }
+.summary__lines { padding: 1rem 0; display: grid; gap: .5rem; min-height: 3.5rem; }
+.summary__line { display: flex; justify-content: space-between; gap: 1rem; font-size: .9rem; color: var(--text-muted); }
+.summary__line b { color: var(--text); font-weight: 600; }
+.summary__empty { color: var(--text-muted); font-size: .9rem; }
+.summary__total { display: flex; justify-content: space-between; align-items: baseline; padding-top: 1rem; border-top: 1px solid var(--line); margin-bottom: 1rem; }
+.summary__total b { font-size: 1.6rem; letter-spacing: -.03em; }
+.summary .btn { width: 100%; }
+.summary__note { min-height: 1.2em; margin-top: .6rem; text-align: center; font-size: .8rem; color: var(--warn); }
+
+.not-found { text-align: center; padding: 5rem 1rem; display: grid; gap: 1rem; justify-items: center; color: var(--text-muted); }
+.not-found h1 { font: 400 2.6rem var(--font-display); color: var(--text); }
+
+/* ---------- My Tickets ---------- */
+.tickets-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; }
+.tickets-head h1 { font: 400 clamp(2rem, 3.8vw, 3rem) / 1.05 var(--font-display); letter-spacing: -.01em; }
+.tickets-head p { color: var(--text-muted); font-size: .9rem; }
+.ticket-filters { display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.ticket-filters button {
+  padding: .5rem 1.05rem; border-radius: 999px; border: 1px solid var(--line-strong); background: transparent;
+  font-size: .86rem; font-weight: 600; transition: border-color .2s, color .2s, background .2s;
+}
+.ticket-filters button:hover { border-color: var(--lime); color: var(--lime); }
+.ticket-filters button[aria-pressed="true"] { background: var(--lime); border-color: var(--lime); color: var(--on-lime); }
+
+.ticket {
+  display: grid; grid-template-columns: 1fr; margin-bottom: 1.3rem; overflow: hidden;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow);
+}
+@media (min-width: 768px) { .ticket { grid-template-columns: 190px 1fr 200px; } }
+.ticket__poster { min-height: 150px; }
+.ticket__status { position: absolute; top: 12px; left: 12px; z-index: 3; }
+.ticket__status .chip { background-color: rgba(20, 20, 20, .9); }
+.ticket__main { padding: 1.3rem 1.4rem; }
+.ticket__name { font: 400 1.9rem / 1.1 var(--font-display); }
+.ticket__rows { margin: .9rem 0; display: grid; gap: .25rem; font-size: .88rem; color: var(--text-muted); }
+.ticket__rows b { color: var(--text); font-weight: 600; }
+.ticket__code { font-variant-numeric: tabular-nums; letter-spacing: .04em; }
+.ticket__foot { display: flex; justify-content: space-between; align-items: baseline; padding-top: .9rem; border-top: 1px solid var(--line); gap: 1rem; flex-wrap: wrap; }
+.ticket__foot b { font-size: 1.2rem; }
+.ticket__msg { margin-top: .8rem; font-size: .85rem; color: var(--text-muted); }
+.ticket__msg--bad { color: var(--bad); }
+
+/* QR side (approved) / locked side (pending, rejected) */
+.ticket__qr {
+  padding: 1.2rem; display: grid; place-items: center; gap: .6rem; text-align: center;
+  border-top: 1px dashed var(--line-strong); font-size: .75rem; color: var(--text-muted);
+}
+@media (min-width: 768px) { .ticket__qr { border-top: 0; border-left: 1px dashed var(--line-strong); } }
+.ticket__qr-box { width: 132px; height: 132px; padding: 8px; border-radius: 12px; background: var(--text); color: #141414; }
+.ticket__qr-box svg { width: 100%; height: 100%; display: block; }
+.ticket__locked { width: 132px; height: 132px; border-radius: 12px; border: 1px dashed var(--line-strong); display: grid; place-items: center; font-size: 2rem; color: var(--text-muted); }
+
+.gate { text-align: center; padding: 4rem 1rem; display: grid; gap: 1rem; justify-items: center; color: var(--text-muted); }
+.gate h2 { font: 400 2.2rem var(--font-display); color: var(--text); }
+.gate[hidden], .booking[hidden], [hidden].upload__preview { display: none; }
+
+/* =====================================================================
+   CHECKOUT + CONFIRMATION  (Member 4)
+   ===================================================================== */
+.steps__item--done { color: var(--text-muted); }
+.steps__item--done::before { background: var(--lime); }
+
+.checkout-steps { display: grid; gap: 1.25rem; }
+.step__title { display: flex; align-items: center; gap: .8rem; font: 400 1.7rem var(--font-display); margin-bottom: .6rem; }
+.step__num {
+  width: 30px; height: 30px; border-radius: 50%; flex: none; display: grid; place-items: center;
+  background: var(--lime-tint); color: var(--lime); border: 1px solid rgba(198, 241, 53, .35);
+  font: 700 .85rem var(--font-body);
+}
+.step__text { color: var(--text-muted); margin-bottom: 1.1rem; max-width: 36rem; }
+.step__text b { color: var(--text); }
+.step .btn { width: 100%; }
+@media (min-width: 576px) { .step .btn { width: auto; min-width: 280px; } }
+.step__status { margin-top: .8rem; font-size: .85rem; color: var(--text-muted); min-height: 1.2em; }
+.step__status--warn { color: var(--warn); }
+.step__note { margin-top: .9rem; font-size: .8rem; color: var(--text-muted); max-width: 36rem; }
+.step__note b { color: var(--warn); font-weight: 600; }
+
+/* Screenshot picker. The real file input stays in the page (visually hidden) so it works with keyboard and screen readers. */
+.upload { margin-bottom: 1.1rem; }
+.upload__input { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; clip: rect(0 0 0 0); }
+.upload__drop {
+  display: flex; align-items: center; gap: .9rem; padding: 1.05rem 1.1rem; cursor: pointer;
+  border: 1.5px dashed var(--line-strong); border-radius: 14px; background: var(--surface-dark); color: var(--text-muted);
+  transition: border-color .2s, color .2s;
+}
+.upload__drop:hover, .upload__input:focus-visible + .upload__drop { border-color: var(--lime); color: var(--text); }
+.upload__drop .icon { font-size: 1.5rem; color: var(--lime); }
+.upload__drop b { display: block; color: var(--text); font-size: .92rem; }
+.upload__drop small { font-size: .78rem; }
+.upload.has-file .upload__drop { display: none; }
+.upload__preview { display: flex; gap: 1rem; align-items: center; padding: .75rem; border: 1px solid var(--line-strong); border-radius: 14px; background: var(--surface-dark); }
+.upload__preview img { width: 76px; height: 96px; object-fit: cover; object-position: top; border-radius: 8px; border: 1px solid var(--line); background: var(--bg-deep); flex: none; }
+.upload__meta { min-width: 0; flex: 1; }
+.upload__meta b { display: block; font-size: .9rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.upload__meta small { color: var(--text-muted); font-size: .78rem; }
+.upload__actions { display: flex; gap: 1.1rem; margin-top: .6rem; }
+.upload__actions label, .upload__actions button { padding: 0; margin: 0; background: none; border: 0; font: 700 .82rem var(--font-body); color: var(--lime); cursor: pointer; }
+.upload__actions label:hover, .upload__actions button:hover { color: var(--lime-hover); }
+.upload__actions button { color: var(--text-muted); }
+.upload__actions button:hover { color: var(--bad); }
+.upload .field__error { margin-top: .5rem; }
+
+.summary__link { display: block; margin-top: .8rem; text-align: center; font-size: .85rem; font-weight: 600; color: var(--text-muted); }
+.summary__link:hover { color: var(--lime); }
+
+/* Confirmation */
+.confirm { min-height: 100vh; display: flex; align-items: center; padding: calc(var(--nav-height) + 1.5rem) 0 4rem;
+  background: radial-gradient(46% 42% at 50% 30%, rgba(198, 241, 53, .07), transparent 70%), var(--bg); }
+.confirm__inner { max-width: 520px; margin: 0 auto; text-align: center; }
+.confirm__icon {
+  width: 88px; height: 88px; margin: 0 auto 1.6rem; border-radius: 50%; display: grid; place-items: center;
+  background: var(--lime); color: var(--on-lime); font-size: 2.6rem; box-shadow: 0 18px 50px -12px rgba(198, 241, 53, .3);
+  animation: confirm-pop .6s cubic-bezier(.2, 1.4, .4, 1) both;
+}
+@keyframes confirm-pop { from { transform: scale(.4); opacity: 0; } to { transform: none; opacity: 1; } }
+.confirm h1 { font: 400 clamp(2.8rem, 7vw, 4.4rem) / 1 var(--font-display); letter-spacing: -.01em; }
+.confirm__text { margin: 1rem auto 0; max-width: 28rem; color: var(--text-muted); }
+.confirm__card { display: flex; gap: 1rem; align-items: center; text-align: left; margin: 2rem 0 1.8rem; padding: 1rem 1.1rem; }
+.confirm__thumb { width: 76px; height: 96px; border-radius: 12px; flex: none; }
+.confirm__name { font-weight: 700; }
+.confirm__rows { display: grid; gap: .15rem; margin-top: .3rem; font-size: .85rem; color: var(--text-muted); }
+.confirm__rows b { color: var(--text); font-weight: 600; }
+.confirm__actions { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+.confirm__actions--spaced { margin-top: 1.5rem; }
+.confirm__status { margin-top: .4rem; }
+.gate__link { color: var(--lime); font-weight: 700; }
+@media (prefers-reduced-motion: reduce) { .confirm__icon { animation: none; } }

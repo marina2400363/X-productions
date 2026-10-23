@@ -1,0 +1,46 @@
+/* =====================================================================
+   X-PRODUCTIONS — LOGIN / REGISTER STYLES  (Member 3)
+   ===================================================================== */
+
+.auth { min-height: 100vh; display: grid; grid-template-columns: 1fr; }
+@media (min-width: 992px) { .auth { grid-template-columns: 1fr 1fr; } }
+
+/* Left: photograph panel (desktop only) */
+.auth__visual { display: none; position: relative; overflow: hidden; background: var(--bg-deep); }
+@media (min-width: 992px) { .auth__visual { display: block; } }
+.auth__poster { position: absolute; inset: 0; }
+.auth__poster .poster__img { filter: sepia(.2) saturate(.9) contrast(1.05) brightness(.6); }
+.auth__visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(18, 18, 18, .9), rgba(18, 18, 18, .1) 60%); }
+.auth__quote {
+  position: absolute; left: 3.5rem; bottom: 3.5rem; z-index: 2;
+  font: 400 clamp(2.6rem, 4.4vw, 4rem) / 1 var(--font-display); letter-spacing: -.02em;
+}
+
+/* Right: form */
+.auth__panel { display: flex; align-items: center; justify-content: center; padding: calc(var(--nav-height) + 2rem) 1rem 3rem; }
+.auth__card { width: min(100%, 420px); }
+.auth__title { font: 400 clamp(2.2rem, 4vw, 3rem) / 1.05 var(--font-display); letter-spacing: -.01em; }
+.auth__sub { margin: .6rem 0 1.2rem; color: var(--text-muted); }
+
+.notice {
+  margin-bottom: 1.4rem; padding: .8rem 1rem; border-radius: 12px;
+  background: var(--lime-tint); border: 1px solid rgba(198, 241, 53, .25);
+  font-size: .82rem; color: var(--text);
+}
+
+form .field { margin-bottom: .85rem; }
+.form-error { margin: 0 0 .6rem; }
+.auth__submit { width: 100%; margin-top: .4rem; }
+.auth__alt { width: 100%; margin-top: .7rem; }
+.auth__switch { margin-top: 1.4rem; text-align: center; color: var(--text-muted); font-size: .9rem; }
+.auth__switch a { color: var(--lime); font-weight: 700; }
+.auth__switch a:hover { color: var(--lime-hover); }
+
+.field__input[aria-invalid="true"] { border-color: var(--bad); }
+.check { display: flex; gap: .65rem; align-items: flex-start; font-size: .88rem; color: var(--text-muted); cursor: pointer; }
+.check input { width: 18px; height: 18px; margin-top: .1rem; accent-color: var(--lime); flex: none; }
+
+.devbox {
+  margin-top: 2rem; padding: 1rem; border: 1px dashed var(--line-strong); border-radius: 12px;
+  display: grid; gap: .6rem; justify-items: start; font-size: .82rem; color: var(--text-muted);
+}
