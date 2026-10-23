@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QR Scanner — X-Productions Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-page" data-page="qr-scanner" data-root="../">
+
+  <div class="admin">
+    <aside class="admin__sidebar" id="adminSidebar"></aside>
+    <div class="admin-scrim" id="adminScrim"></div>
+    <div class="admin__body">
+      <header class="admin__top" id="adminTopbar"></header>
+
+      <main class="admin__main" id="main">
+        <h1 class="admin-title">QR Scanner</h1>
+        <p class="admin-sub">Check guests in at the gate. Approved tickets are valid once; a second scan shows "Already used".</p>
+        <p class="demo-note"><b>Simulated scanning:</b> there is no camera scanning in Phase 1. Type or paste the ticket code printed under a customer's QR picture on My Tickets (for example <span class="mono">XP-3F9K-0381</span>), or use the sample buttons. Nothing is checked against a real system.</p>
+
+        <div class="scanner-grid">
+          <section class="card" aria-labelledby="scanTitle">
+            <h2 class="card__title" id="scanTitle">Scan a ticket</h2>
+            <div class="scan-frame" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            <form id="scanForm" novalidate>
+              <div class="field">
+                <label class="field__label" for="codeInput">Ticket code</label>
+                <input class="field__input mono" id="codeInput" type="text" placeholder="XP-XXXX-0000" autocomplete="off" spellcheck="false">
+              </div>
+              <button class="btn btn--primary btn--lg scan-btn" type="submit">Simulate scan</button>
+            </form>
+            <div class="samples" role="group" aria-label="Demo samples">
+              <span class="muted">Try a sample:</span>
+              <button class="btn btn--ghost btn--sm" type="button" data-sample="valid">Valid ticket</button>
+              <button class="btn btn--ghost btn--sm" type="button" data-sample="used">Already used</button>
+              <button class="btn btn--ghost btn--sm" type="button" data-sample="pending">Not approved</button>
+              <button class="btn btn--ghost btn--sm" type="button" data-sample="fake">Unknown code</button>
+            </div>
+          </section>
+
+          <section aria-live="polite" aria-label="Scan result">
+            <div class="result result--idle" id="scanResult">
+              <p>Scan a ticket to see the result here.</p>
+            </div>
+            <div class="section-head section-head--spaced"><h2>Recent scans</h2></div>
+            <ul class="history" id="scanHistory"><li class="muted">No scans yet.</li></ul>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

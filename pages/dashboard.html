@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard — X-Productions Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-page" data-page="dashboard" data-root="../">
+
+  <div class="admin">
+    <aside class="admin__sidebar" id="adminSidebar"></aside>
+    <div class="admin-scrim" id="adminScrim"></div>
+    <div class="admin__body">
+      <header class="admin__top" id="adminTopbar"></header>
+
+      <main class="admin__main" id="main">
+        <h1 class="admin-title">Dashboard</h1>
+        <p class="admin-sub">An overview of events, bookings and revenue.</p>
+        <p class="demo-note"><b>Demo data:</b> these numbers are calculated from the simulated bookings stored in this browser (including any you create while testing). They are not real sales figures.</p>
+
+        <!-- Numbers and charts are drawn by js/admin.js -->
+        <div class="stats" id="stats"></div>
+
+        <div class="dash-grid">
+          <section class="card" aria-labelledby="revTitle">
+            <h2 class="card__title" id="revTitle">Revenue by event</h2>
+            <p class="card__sub">Approved bookings only</p>
+            <div class="bars" id="revenueChart"></div>
+          </section>
+          <section class="card" aria-labelledby="statTitle">
+            <h2 class="card__title" id="statTitle">Bookings by status</h2>
+            <p class="card__sub">All bookings</p>
+            <div class="segbar" id="statusBar" role="img" aria-label="Share of bookings by status"></div>
+            <ul class="legend" id="statusLegend"></ul>
+          </section>
+        </div>
+
+        <div class="section-head"><h2>Latest bookings</h2><a class="muted" href="bookings.html">View all</a></div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Booking</th><th>Customer</th><th>Event</th><th>Total</th><th>Status</th></tr></thead>
+            <tbody id="latestRows"></tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>
