@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payments — X-Productions Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-page" data-page="payments" data-root="../">
+
+  <div class="admin">
+    <aside class="admin__sidebar" id="adminSidebar"></aside>
+    <div class="admin-scrim" id="adminScrim"></div>
+    <div class="admin__body">
+      <header class="admin__top" id="adminTopbar"></header>
+
+      <main class="admin__main" id="main">
+        <h1 class="admin-title">Payments</h1>
+        <p class="admin-sub">Review the payment screenshots customers submitted after paying with InstaPay.</p>
+        <p class="demo-note"><b>Demo only:</b> Approve and Reject just change a status in this browser. Nothing here verifies a real bank or InstaPay transaction, and screenshots are not stored in Phase 1 (a drawn stand-in is shown).</p>
+
+        <div class="section-head"><h2>Pending payments</h2><span id="pendingCount"></span></div>
+        <div class="pay-list" id="paymentList"></div>
+
+        <div class="section-head"><h2>Reviewed</h2></div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Booking</th><th>Customer</th><th>Event</th><th>Total</th><th>Result</th></tr></thead>
+            <tbody id="reviewedList"></tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Reject: ask for a reason that the customer will see on My Tickets -->
+  <dialog class="dialog" id="rejectDialog" aria-labelledby="rejectTitle">
+    <form id="rejectForm">
+      <h2 id="rejectTitle">Reject payment</h2>
+      <p>Booking <b id="rejectCode"></b>. The customer will see this reason.</p>
+      <div class="field">
+        <label class="field__label" for="rejectReason">Reason</label>
+        <select class="field__input" id="rejectReason">
+          <option>Amount doesn't match</option>
+          <option>Screenshot unreadable</option>
+          <option>Transfer not received</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="dialog__actions">
+        <button class="btn btn--ghost" type="button" id="rejectCancel">Cancel</button>
+        <button class="btn btn--bad" type="submit">Reject payment</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/admin.js"></script>
+  <script src="../js/payment.js"></script>
+</body>
+</html>

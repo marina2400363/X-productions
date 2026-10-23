@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Users &amp; Bookings — X-Productions Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-page" data-page="bookings" data-root="../">
+
+  <div class="admin">
+    <aside class="admin__sidebar" id="adminSidebar"></aside>
+    <div class="admin-scrim" id="adminScrim"></div>
+    <div class="admin__body">
+      <header class="admin__top" id="adminTopbar"></header>
+
+      <main class="admin__main" id="main">
+        <h1 class="admin-title">Users &amp; Bookings</h1>
+        <p class="admin-sub">Every booking with its customer, event, tickets and status. Customers' bookings appear here as soon as they submit payment proof.</p>
+
+        <div class="toolbar">
+          <div class="field"><label class="sr-only" for="bookingSearch">Search bookings</label>
+            <input class="field__input" id="bookingSearch" type="search" placeholder="Search by code, customer, email or event" autocomplete="off"></div>
+          <div class="field"><label class="sr-only" for="statusFilter">Status</label>
+            <select class="field__input" id="statusFilter">
+              <option value="">All statuses</option>
+              <option value="pending">Pending Approval</option>
+              <option value="approved">Approved</option>
+              <option value="rejected">Rejected</option>
+            </select></div>
+          <div class="field"><label class="sr-only" for="eventFilter">Event</label>
+            <select class="field__input" id="eventFilter"><option value="">All events</option></select></div>
+          <span class="toolbar__count" id="bookingCount" aria-live="polite"></span>
+        </div>
+
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Booking</th><th>Customer</th><th>Event</th><th>Tickets</th><th>Total</th><th>Status</th><th>Date</th></tr></thead>
+            <tbody id="bookingRows"></tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/admin.js"></script>
+  <script src="../js/payment.js"></script>
+</body>
+</html>

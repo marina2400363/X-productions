@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout — X-Productions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/booking.css">
+</head>
+<body data-page="events" data-root="../">
+
+  <div id="site-header"></div>
+
+  <main id="main" class="page-narrow">
+    <div class="container">
+      <h1 class="booking__title">Checkout</h1>
+      <ol class="steps" aria-label="Booking steps">
+        <li class="steps__item steps__item--done">Your tickets</li><li class="steps__item steps__item--on">Checkout</li><li class="steps__item">All set</li>
+      </ol>
+
+      <!-- Shown when there is nothing to pay for (js/payment.js decides) -->
+      <div class="gate" id="checkoutEmpty" hidden>
+        <h2>No tickets selected</h2>
+        <p>Choose an event and tickets first, then come back to check out.</p>
+        <a class="btn btn--primary btn--lg" href="events.html">Browse events</a>
+      </div>
+
+      <div class="booking" id="checkoutGrid" hidden>
+        <div class="checkout-steps">
+
+          <!-- Step 1: pay externally -->
+          <section class="card step" aria-labelledby="payTitle">
+            <h2 class="step__title" id="payTitle"><span class="step__num">1</span>Pay with InstaPay</h2>
+            <p class="step__text">Pay <b id="payAmount"></b> using InstaPay. The payment page opens in a new tab — complete it there, then come back here.</p>
+            <button class="btn btn--primary btn--lg" id="payBtn" type="button">Pay with InstaPay<span data-icon="external"></span></button>
+            <p class="step__status" id="payMsg" role="status"></p>
+          </section>
+
+          <!-- Step 2: upload the screenshot of the payment -->
+          <section class="card step" aria-labelledby="uploadTitle">
+            <h2 class="step__title" id="uploadTitle"><span class="step__num">2</span>Upload your payment screenshot</h2>
+            <p class="step__text">After paying, choose a screenshot of the payment confirmation from your device (PNG, JPG or WebP, up to 5 MB).</p>
+
+            <div class="upload" id="upload">
+              <input class="upload__input" id="proofInput" type="file" accept="image/png,image/jpeg,image/webp" aria-describedby="proofError">
+              <label class="upload__drop" for="proofInput">
+                <span data-icon="upload"></span>
+                <span><b>Choose a screenshot</b><small>Click to browse your files</small></span>
+              </label>
+              <div class="upload__preview" id="proofPreview" hidden>
+                <img id="proofImg" alt="Selected payment screenshot">
+                <div class="upload__meta">
+                  <b id="proofName"></b>
+                  <small id="proofSize"></small>
+                  <div class="upload__actions">
+                    <label for="proofInput">Replace</label>
+                    <button type="button" id="proofRemove">Remove</button>
+                  </div>
+                </div>
+              </div>
+              <p class="field__error" id="proofError" role="alert"></p>
+            </div>
+
+            <button class="btn btn--primary btn--lg" id="submitProof" type="button" disabled>Submit payment proof</button>
+            <p class="step__note">Phase 1 demo: the screenshot is only shown in your browser. It is not uploaded to a server, and after you submit, the booking is marked <b>Pending Approval</b> in this demo.</p>
+          </section>
+        </div>
+
+        <aside class="summary card" aria-label="Order summary">
+          <div class="summary__event" id="coEvent"></div>
+          <div class="summary__lines" id="coLines"></div>
+          <div class="summary__total"><span>Total</span><b id="coTotal"></b></div>
+          <p class="summary__meta" id="coCustomer"></p>
+          <a class="summary__link" href="booking.html" id="coEdit">Change tickets</a>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/payment.js"></script>
+</body>
+</html>
