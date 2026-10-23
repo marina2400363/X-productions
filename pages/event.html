@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Events — X-Productions Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="admin-page" data-page="events" data-root="../">
+
+  <div class="admin">
+    <aside class="admin__sidebar" id="adminSidebar"></aside>
+    <div class="admin-scrim" id="adminScrim"></div>
+    <div class="admin__body">
+      <header class="admin__top" id="adminTopbar"></header>
+
+      <main class="admin__main" id="main">
+        <div class="page-actions">
+          <div>
+            <h1 class="admin-title">Events</h1>
+            <p class="admin-sub">Add, edit and remove events, change ticket categories and prices, and set whether an event is on sale. Changes appear on the customer site straight away.</p>
+          </div>
+          <button class="btn btn--primary" id="addEvent" type="button">+ Add event</button>
+        </div>
+        <p class="demo-note"><b>Demo only:</b> edits are saved in this browser (no server). <button class="link-btn" id="resetEvents" type="button">Reset events to the original list</button></p>
+
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>Event</th><th>Date</th><th>Tickets</th><th>Availability</th><th>Actions</th></tr></thead>
+            <tbody id="eventRows"></tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Add / edit event -->
+  <dialog class="dialog dialog--wide" id="eventDialog" aria-labelledby="eventDialogTitle">
+    <form id="eventForm" novalidate>
+      <h2 id="eventDialogTitle">Add event</h2>
+      <div class="form-grid">
+        <div class="field form-grid__full"><label class="field__label" for="fName">Event name</label>
+          <input class="field__input" id="fName" name="name" type="text" placeholder="e.g. Nile Nights Live"></div>
+        <div class="field"><label class="field__label" for="fArtist">Artist / organizer</label>
+          <input class="field__input" id="fArtist" name="artist" type="text" placeholder="Who is performing?"></div>
+        <div class="field"><label class="field__label" for="fCategory">Category</label>
+          <select class="field__input" id="fCategory" name="category"></select></div>
+        <div class="field"><label class="field__label" for="fDate">Date</label>
+          <input class="field__input" id="fDate" name="date" type="date"></div>
+        <div class="field"><label class="field__label" for="fTime">Start time</label>
+          <input class="field__input" id="fTime" name="time" type="time" value="20:00"></div>
+        <div class="field"><label class="field__label" for="fCity">City</label>
+          <input class="field__input" id="fCity" name="city" type="text" placeholder="Cairo"></div>
+        <div class="field"><label class="field__label" for="fVenue">Venue</label>
+          <input class="field__input" id="fVenue" name="venue" type="text" placeholder="Grand Arena, New Cairo"></div>
+        <div class="field form-grid__full"><label class="field__label" for="fDescription">Description</label>
+          <textarea class="field__input" id="fDescription" name="description" rows="4" placeholder="Tell guests what to expect. Leave a blank line between paragraphs."></textarea></div>
+        <div class="field form-grid__full"><label class="field__label" for="fImage">Image URL (optional)</label>
+          <input class="field__input" id="fImage" name="image" type="text" placeholder="https://… or assets/images/my-poster.jpg"></div>
+        <div class="field form-grid__full"><label class="field__label" for="fStatus">Availability</label>
+          <select class="field__input" id="fStatus" name="status">
+            <option value="on-sale">On sale</option>
+            <option value="sold-out">Sold out</option>
+            <option value="draft">Hidden (draft)</option>
+          </select></div>
+      </div>
+
+      <fieldset class="tiers">
+        <legend>Ticket categories</legend>
+        <div id="tierRows"></div>
+        <p class="tiers__hint">Name · Price (EGP) · Tickets available · Note</p>
+        <button class="btn btn--ghost btn--sm" id="addTier" type="button">+ Add category</button>
+      </fieldset>
+
+      <p class="field__error" id="eventFormError" role="alert"></p>
+      <div class="dialog__actions">
+        <button class="btn btn--ghost" type="button" id="eventCancel">Cancel</button>
+        <button class="btn btn--primary" type="submit">Save event</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Delete confirmation -->
+  <dialog class="dialog" id="deleteDialog" aria-labelledby="deleteTitle">
+    <form method="dialog" id="deleteForm">
+      <h2 id="deleteTitle">Delete event?</h2>
+      <p id="deleteText"></p>
+      <div class="dialog__actions">
+        <button class="btn btn--ghost" type="button" id="deleteCancel">Cancel</button>
+        <button class="btn btn--bad" type="submit">Delete event</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

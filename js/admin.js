@@ -19,7 +19,7 @@ const XPAdmin = (function () {
     { group: "Overview" },
     { key: "dashboard", label: "Dashboard", icon: "grid", href: "dashboard.html" },
     { group: "Manage" },
-    { key: "events", label: "Events", icon: "calendar", href: "events.html" },
+    { key: "events", label: "Events", icon: "calendar", href: "event.html" },
     { key: "bookings", label: "Users & Bookings", icon: "users", href: "bookings.html" },
     { key: "payments", label: "Payments", icon: "card", href: "payments.html", badge: true },
     { group: "Entry" },
@@ -130,7 +130,7 @@ const XPAdmin = (function () {
         <span class="stat__label">${label}</span><b class="stat__value">${value}</b><span class="stat__sub">${sub}</span>
       </${href ? "a" : "div"}>`;
     el("stats").innerHTML =
-      stat("Total events", XP.EVENTS.length, hidden ? `${hidden} hidden from customers` : "All visible", "events.html") +
+      stat("Total events", XP.EVENTS.length, hidden ? `${hidden} hidden from customers` : "All visible", "event.html") +
       stat("Total bookings", bookings.length, `${approved.length} approved`, "bookings.html") +
       stat("Tickets sold", ticketsSold.toLocaleString("en-US"), "From approved bookings") +
       stat("Revenue", XP.formatPrice(revenue), "Approved payments · demo") +
